@@ -5,6 +5,7 @@
 variable "name" {}
 variable "vpc_cidr" {}
 variable "public_subnet" {}
+variable "azs" {}
 
 module "vpc" {
  source = "./vpc"
@@ -17,6 +18,7 @@ module "public_subnet" {
   name    = "${var.name}-public"
   vpc_id  = "${module.vpc.id}"
   cidrs   = "${var.public_subnet}"
+  azs="${var.azs}"
 }
 
 # VPC
